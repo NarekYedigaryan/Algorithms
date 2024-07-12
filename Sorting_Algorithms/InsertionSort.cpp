@@ -2,7 +2,6 @@
 #include <bits/stdc++.h>
 
 void InsertionSort(int*,int);
-
 int main()
 {
    const int n = 7;
@@ -14,6 +13,10 @@ int main()
    // }
    
     InsertionSort(arr,n);
+   for (size_t i = 0; i < n; i++)
+   {
+    std::cout<<arr[i]<<" ";
+   }
 }
 
 void InsertionSort(int* arr,int size)
@@ -31,9 +34,4 @@ void InsertionSort(int* arr,int size)
       }
       arr[j+1] = result;
    }
-   for (size_t i = 0; i < size; i++)
-   {
-    std::cout<<arr[i]<<" ";
-   }
-   
 }
