@@ -13,6 +13,7 @@ class DynamicArray
     friend std::ostream& operator<<(std::ostream& os, const DynamicArray& obj);
     int& operator[](int pos);
     const int& operator[](int pos) const;
+    ~DynamicArray();
 
   public:
     void Reserve(int cap);

@@ -15,5 +15,8 @@ int main()
     //     std::cout<< arr[i]<<" ";
     // }
     // std::cout<<arr.IsEmpty();
-    std::cout<<arr;
+    // std::cout<<arr;
+    arr.~DynamicArray();
+    // std::cout<<arr[0];
+    std::cout<<arr.IsEmpty();
 }

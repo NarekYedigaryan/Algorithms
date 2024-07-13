@@ -112,6 +112,14 @@ const int& DynamicArray::operator[](int pos) const
     return m_arr[pos];
 }
 
+ DynamicArray::~DynamicArray()
+ {
+    delete[] m_arr;
+    m_cap = 0;
+    m_size = 0;
+ }
+
+
 void DynamicArray::Reserve(int cap)
 {
     Resize(cap);
