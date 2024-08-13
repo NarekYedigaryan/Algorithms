@@ -23,8 +23,19 @@ int main()
     // std::cout<<obj.isEmpty();
     
     BST obj2;
-  
+    obj2.iterative_add(10);
+    obj2.iterative_add(6);
+    obj2.iterative_add(12);
+    obj2.iterative_add(4);
+    obj2.iterative_add(9);
+    obj2.iterative_add(11);
+    obj2.iterative_add(15);
+    // obj2.iterative_clear();
 
-
-    obj2.recursive_inorderTraverse();
+    // std::cout<<obj2.iterative_getHeight();
+    // obj2.recursive_inorderTraverse();
+    // obj2.iterative_preorderTraverse();
+    // obj2.iterative_inorderTraverse();
+    // std::cout<<obj2.iterative_getNumberOfNodes();
+    std::cout<<obj2.iterative_contains(77);
 }

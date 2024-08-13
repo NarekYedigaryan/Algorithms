@@ -174,7 +174,7 @@ namespace Nar
         prev_node->next = NewNode;
     }
     
-   template<typename T>
+    template<typename T>
     void forward_list<T>::erase_after(Node* prev_node) 
     {
     if (prev_node == nullptr) 
@@ -188,7 +188,7 @@ namespace Nar
     }
     prev_node->next = node_to_delete->next;
     delete node_to_delete;
-}
+    }
 
 
     template<typename T>
@@ -207,9 +207,9 @@ namespace Nar
         head = NewNode;
     }
 
-   template<typename T>
-   void forward_list<T>::push_back(const value_type& value)
-   {
+    template<typename T>
+    void forward_list<T>::push_back(const value_type& value)
+    {
      Node* new_node = new Node(value);
      if (!head) 
      {
@@ -223,7 +223,7 @@ namespace Nar
         }
         tmp->next = new_node;
       }
-   }
+    }
 
 
     template<typename T>
@@ -256,7 +256,129 @@ namespace Nar
         
     }
 
+    template<typename T>
+    void forward_list<T>::swap(forward_list& other) noexcept
+    {
+      Node* tmp = head;
+      head = other.head;
+      other.head = tmp;
+    }
 
+   template<typename T>
+   void forward_list<T>::merge(forward_list& other)
+   {
+    if (!head) 
+    {
+        head = other.head; 
+        other.head = nullptr;
+        return;
+    }
 
+    Node* tmp = head;
+    Node* other_tmp = other.head;
+
+    if (tmp->data > other_tmp->data) 
+    {
+        std::swap(tmp, other_tmp);
+        std::swap(head, other.head);
+    }
+
+    while (tmp->next && other_tmp) 
+    {
+        if (tmp->next->data > other_tmp->data) 
+        {
+            Node* next_other = other_tmp->next;
+            other_tmp->next = tmp->next;
+            tmp->next = other_tmp;
+            other_tmp = next_other;
+        }
+        tmp = tmp->next;
+    }
+
+    if (other_tmp) {
+        tmp->next = other_tmp; 
+    }
+
+    other.head = nullptr; 
+   }
+    
+    template<typename T>
+    void forward_list<T>::merge(forward_list&& other)
+    {
+        this->merge(other);
+    }
+
+    template<typename T>
+    void forward_list<T>::reverse() noexcept
+    {
+      Node* prev = nullptr;
+      Node* current = head;
+      Node* next = nullptr;
+
+      while (current != nullptr) 
+      {
+        next = current->next;  
+        current->next = prev;   
+        prev = current;         
+        current = next;         
+      }
+    
+      head = prev; 
+    }
+
+    template<typename T>
+    typename forward_list<T>::size_type forward_list<T>::unique()
+    {
+    if (!head) return 0; 
+
+    Node* current = head;
+    size_type removed_count = 0;
+
+    while (current->next != nullptr) 
+    {
+        if (current->data == current->next->data) 
+        {
+            Node* duplicate = current->next;
+            current->next = current->next->next; 
+            delete duplicate; 
+            ++removed_count;
+        } else 
+        {
+            current = current->next; 
+        }
+    }
+
+    return removed_count; 
+  }
+
+    template<typename T>
+    void forward_list<T>::sort() 
+    {
+    if (!head || !head->next) return;
+
+    Node* sorted = nullptr;
+
+    while (head) {
+        Node* node = head;
+        head = head->next;
+
+        if (!sorted || sorted->data >= node->data) 
+        {
+            node->next = sorted;
+            sorted = node;
+        } else 
+        {
+            Node* current = sorted;
+            while (current->next && current->next->data < node->data) 
+            {
+                current = current->next;
+            }
+            node->next = current->next;
+            current->next = node;
+        }
+    }
+
+    head = sorted;
+}
 
 }

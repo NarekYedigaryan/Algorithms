@@ -47,22 +47,14 @@ public:
     void push_back(const value_type& value);
     void push_back(value_type&& value);
     void pop_front();
-    // void swap(forward_list& other) noexcept;
-    // void merge(forward_list& other);
-    // void merge(forward_list&& other);
-    // void reverse() noexcept;
-    // size_type unique();
-    // void sort();
+    void swap(forward_list& other) noexcept;
+    void merge(forward_list& other);
+    void merge(forward_list&& other);
+    void reverse() noexcept;
+    size_type unique();
+    void sort();
 
-
-private:
-    // void copy_from(const forward_list& other);
-    // void move_from(forward_list&& other);
-    // void free();
 };
-
-// template<typename T>
-// bool operator==(const forward_list<T>& lhv, const forward_list<T>& rhv);
 
 }
 #include "./forward_list.hpp"
