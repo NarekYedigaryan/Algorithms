@@ -86,9 +86,6 @@ void BST::iterative_clear()
         }
         delete node;
     }
-    
-    
-
     root = nullptr;  
 }
 
@@ -153,7 +150,6 @@ void BST::iterative_postorderTraverse()
 
         std::stack<TreeNode*> s1, s2;
         s1.push(root);
-
         while (!s1.empty()) 
         {
             TreeNode* node = s1.top();

@@ -9,6 +9,11 @@ public:
   TreeNode* left;
   TreeNode* right;
   int data;
+  TreeNode()
+  :data()
+  ,left(nullptr)
+  ,right(nullptr)
+  {}
   TreeNode(int val)
   :data(val)
   ,left(nullptr)

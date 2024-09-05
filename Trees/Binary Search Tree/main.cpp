@@ -35,7 +35,7 @@ int main()
     // std::cout<<obj2.iterative_getHeight();
     // obj2.recursive_inorderTraverse();
     // obj2.iterative_preorderTraverse();
-    // obj2.iterative_inorderTraverse();
+    obj2.iterative_inorderTraverse();
     // std::cout<<obj2.iterative_getNumberOfNodes();
     std::cout<<obj2.iterative_contains(77);
 }
